@@ -35,7 +35,17 @@ if isMultiple
                             val = parseFloat(aggregator.format((val / percentAttrVal) * 100))
                             td.textContent = aggregator.format(val) + '%'
                             if inputOperator.length > 0
-                                # Optimized threshold check
+                                threshOper = inputOperator[index]
+                                if threshOper && threshOper.length > 0
+                                    # Optimized threshold check for highlighting
+                                    if (threshOper[0] == '<' && val < parseFloat(inputThresholds[index][0])) ||
+                                       (threshOper[0] == '=' && val == parseFloat(inputThresholds[index][0])) ||
+                                       (threshOper[0] == '>' && val > parseFloat(inputThresholds[index][0])):
+                                        td.className = "pvtGrandTotal red-highlight"
+                                    else if (threshOper[1] == '<' && val < parseFloat(inputThresholds[index][1])) ||
+                                            (threshOper[1] == '=' && val == parseFloat(inputThresholds[index][1])) ||
+                                            (threshOper[1] == '>' && val > parseFloat(inputThresholds[index][1])):
+                                        td.className = "pvtGrandTotal green-highlight"
                         else
                             td.textContent = aggregator.format(val)
                         td.setAttribute("data-value", val)
@@ -63,7 +73,17 @@ if isMultiple
                     val = parseFloat(aggregator.format((val / percentAttrVal) * 100))
                     td.textContent = aggregator.format(val) + '%'
                     if inputOperator.length > 0
-                        # Optimized threshold check
+                        threshOper = inputOperator[index]
+                        if threshOper && threshOper.length > 0
+                            # Optimized threshold check for highlighting
+                            if (threshOper[0] == '<' && val < parseFloat(inputThresholds[index][0])) ||
+                               (threshOper[0] == '=' && val == parseFloat(inputThresholds[index][0])) ||
+                               (threshOper[0] == '>' && val > parseFloat(inputThresholds[index][0])):
+                                td.className = "pvtGrandTotal red-highlight"
+                            else if (threshOper[1] == '<' && val < parseFloat(inputThresholds[index][1])) ||
+                                    (threshOper[1] == '=' && val == parseFloat(inputThresholds[index][1])) ||
+                                    (threshOper[1] == '>' && val > parseFloat(inputThresholds[index][1])):
+                                td.className = "pvtGrandTotal green-highlight"
                 else
                     td.textContent = aggregator.format(val)
                 if withoutTotal == false
@@ -92,7 +112,17 @@ if isMultiple
                         val = parseFloat(totalAggregator.format((val / percentAttrVal) * 100))
                         td.textContent = totalAggregator.format(val) + '%'
                         if inputOperator.length > 0
-                            # Optimized threshold check
+                            threshOper = inputOperator[index]
+                            if threshOper && threshOper.length > 0
+                                # Optimized threshold check for highlighting
+                                if (threshOper[0] == '<' && val < parseFloat(inputThresholds[index][0])) ||
+                                   (threshOper[0] == '=' && val == parseFloat(inputThresholds[index][0])) ||
+                                   (threshOper[0] == '>' && val > parseFloat(inputThresholds[index][0])):
+                                    td.className = "pvtGrandTotal red-highlight"
+                                else if (threshOper[1] == '<' && val < parseFloat(inputThresholds[index][1])) ||
+                                        (threshOper[1] == '=' && val == parseFloat(inputThresholds[index][1])) ||
+                                        (threshOper[1] == '>' && val > parseFloat(inputThresholds[index][1])):
+                                    td.className = "pvtGrandTotal green-highlight"
                     else
                         td.textContent = totalAggregator.format(val)
                     td.setAttribute("data-value", val)
